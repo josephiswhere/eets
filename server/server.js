@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+// const fs = require('fs');
 const path = require("path");
 
 //import controlers?
@@ -8,13 +9,16 @@ const path = require("path");
 app.use("/", express.static(path.join(__dirname, "../build")));
 app.use(express.json());
 
-app.use(
+app.get(
   "/api/users/",
   //file controler?
   //we will want to check if the user is logged in perhaps via cookies?
   (req, res) => {
-    console.log(req.body)
-    res.status(200);
+    console.log(req.headers.chef)
+    // const chef = 
+    // fs.writeFile()
+    let users = ['Bob', 'Bill', 'Steve']
+    res.status(200).send({users: users});
   }
 );
 

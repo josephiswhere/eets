@@ -1,11 +1,12 @@
 const path = require("path");
+// const fs = require('fs');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: { path: path.resolve(__dirname, "build"), filename: "bundle.js" },
   mode: process.env.NODE_ENV || "development",
-
+  // target: 'node',
   devServer: {
     contentBase: path.join(__dirname, "src"),
     publicPath: "/",
@@ -14,7 +15,7 @@ module.exports = {
         target: "http://[::1]:3000",
         changeOrigin: true,
         secure: false,
-        logLevel: 'debug',
+        logLevel: "debug",
       },
     },
   },
@@ -46,6 +47,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     modules: [path.resolve(__dirname, "src"), "node_modules"],
+    // fallback: {
+    //   "fs": false
+    // },
   },
   plugins: [
     new HtmlWebpackPlugin({
